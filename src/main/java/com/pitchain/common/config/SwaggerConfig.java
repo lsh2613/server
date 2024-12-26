@@ -14,7 +14,6 @@ public class SwaggerConfig {
         return new OpenAPI()
                 .info(new Info().title("Pitchain API")
                                 .version("v0.0.1")
-//                        .license(new License().name("Apache 2.0").url("http://springdoc.org"))
                 )
                 .externalDocs(new ExternalDocumentation()
                         .description("Pitchain Server Github")

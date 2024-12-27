@@ -1,16 +1,20 @@
 # yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
-language: "ko-KR" # 리뷰에 사용할 언어 설정 (한국어)
-early_access: false # 베타 기능 사용 여부 (false로 설정 시 비활성화)
+language: "ko-KR" # 리뷰에 사용할 언어 설정
+early_access: false # 베타 기능 사용 여부
 
 reviews: # 리뷰 관련 설정
   profile: "chill" # 리뷰 스타일 설정 (chill: 가벼운 리뷰 스타일)
   request_changes_workflow: false # 코드 변경 요청 워크플로우 활성화 여부
-  high_level_summary: true # 코드 리뷰 요약 제공 여부
+  poem: false # 시 포함 여부
+  high_level_summary: false # 코드 리뷰 요약 제공 여부
   review_status: true # 리뷰 상태 표시 여부
   collapse_walkthrough: true # 코드 설명 접기 여부
   auto_review: # 자동 리뷰 설정
     enabled: true # 자동 리뷰 활성화 여부
     drafts: false # 자동 리뷰 시 초안 모드 여부
+    base_branches: # 리뷰 적용 할 브랜치
+      - dev
+      - feat/.*
 
 chat: # AI와의 상호작용 관련 설정
   auto_reply: true # AI 자동 응답 여부

@@ -41,3 +41,8 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+// pain jar 파일 생성 비활성화
+jar {
+    enabled = false
+}

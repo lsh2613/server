@@ -1,17 +1,15 @@
 package com.pitchain.entity;
 
+import com.pitchain.common.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Investment {
+public class Investment  extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +25,4 @@ public class Investment {
     private Bm bm;
 
     private long amount;
-
-    @CreatedDate
-    private LocalDateTime createdAt;
 }

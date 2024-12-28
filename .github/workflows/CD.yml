@@ -13,6 +13,7 @@ env:
   CONTAINER_NAME: pitchain-cont           # set this to the name of the container in the
   
 permissions:
+  id-token: write
   contents: read
 
 jobs:
@@ -56,9 +57,8 @@ jobs:
     - name: 7. Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
+        role-to-assume: arn:aws:iam::491085415955:role/pitchain-gitactions-role
+        aws-region: ap-northeast-2
 
     - name: 8. Login to Amazon ECR
       id: login-ecr

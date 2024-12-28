@@ -3,6 +3,7 @@ package com.pitchain.entity;
 import com.pitchain.common.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,4 +26,11 @@ public class Investment  extends BaseEntity {
     private Bm bm;
 
     private long amount;
+
+    @Builder
+    private Investment(Member member, Bm bm, long amount) {
+        this.member = member;
+        this.bm = bm;
+        this.amount = amount;
+    }
 }

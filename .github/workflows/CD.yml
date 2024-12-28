@@ -74,7 +74,11 @@ jobs:
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
-    - name: 10. Fill in the new image ID in the Amazon ECS task definition
+    - name: 10. Copy Task Definition JSON
+      run: |
+        echo "${{ secrets.TASK_DEFINITION_JSON }}" > ${{ env.ECS_TASK_DEFINITION }}
+
+    - name: 11. Fill in the new image ID in the Amazon ECS task definition
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
@@ -82,7 +86,7 @@ jobs:
         container-name: ${{ env.CONTAINER_NAME }}
         image: ${{ steps.build-image.outputs.image }}
 
-    - name: 11. Deploy Amazon ECS task definition
+    - name: 12. Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}

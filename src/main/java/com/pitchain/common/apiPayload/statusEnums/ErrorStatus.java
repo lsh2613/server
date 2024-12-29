@@ -16,7 +16,13 @@ public enum ErrorStatus implements ResponseStatus {
     _FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403", "금지된 요청입니다."),
 
     // jwt
-    MISSING_ACCESS_TOKEN(HttpStatus.BAD_REQUEST, "TOKEN4012", "Access Token이 존재하지 않습니다.");
+    MISSING_ACCESS_TOKEN(HttpStatus.BAD_REQUEST, "TOKEN4012", "Access Token이 존재하지 않습니다."),
+
+    // member
+    MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "MEMBER4041", "존재하지 않는 사용자입니다."),
+
+    // bm
+    BM_NOT_FOUND(HttpStatus.NOT_FOUND, "BM4041", "존재하지 않는 BM입니다.");
 
     private final HttpStatus httpStatus;
     private final String code;

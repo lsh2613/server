@@ -8,6 +8,7 @@ import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -37,19 +38,20 @@ public class ExceptionAdvice extends ResponseEntityExceptionHandler {
     }
 
     // @Valid 어노테이션으로 검증 실패 시 호출
+    @Override
     public ResponseEntity<Object> handleMethodArgumentNotValid(
-            MethodArgumentNotValidException e, HttpHeaders headers, HttpStatus status, WebRequest request) {
+            MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 
         Map<String, String> errors = new LinkedHashMap<>();
 
-        e.getBindingResult().getFieldErrors().stream()
+        ex.getBindingResult().getFieldErrors().stream()
                 .forEach(fieldError -> {
                     String fieldName = fieldError.getField();
                     String errorMessage = Optional.ofNullable(fieldError.getDefaultMessage()).orElse("");
                     errors.merge(fieldName, errorMessage, (existingErrorMessage, newErrorMessage) -> existingErrorMessage + ", " + newErrorMessage);
                 });
 
-        return handleExceptionInternalArgs(e, HttpHeaders.EMPTY, ErrorStatus.valueOf("_BAD_REQUEST"), request, errors);
+        return handleExceptionInternalArgs(ex, HttpHeaders.EMPTY, ErrorStatus.valueOf("_BAD_REQUEST"), request, errors);
     }
 
     // IllegalArgumentException 처리

@@ -18,8 +18,6 @@ public record BmDetailRes(
         Long valuationCap,
         LocalDate deadline,
         LocalDateTime createdAt,
-        Integer minInvestment,
-        Integer maxInvestment,
         Integer investmentGoal,
         String longPitchUrl,
         String spURL,
@@ -37,8 +35,6 @@ public record BmDetailRes(
                 .valuationCap(bm.getValuationCap())
                 .deadline(bm.getDeadline())
                 .createdAt(bm.getCreatedAt())
-                .minInvestment(bm.getMinInvestment())
-                .maxInvestment(bm.getMaxInvestment())
                 .investmentGoal(bm.getInvestmentGoal())
                 .longPitchUrl(bm.getLongPitchUrl())
                 .spURL(bm.getSp().getShortPitchURL())

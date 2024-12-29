@@ -1,4 +1,4 @@
-package com.pitchain.exception;
+package com.pitchain.common.exception;
 
 import com.pitchain.common.apiPayload.dto.CustomApiResponse;
 import com.pitchain.common.apiPayload.dto.ResponseDTO;

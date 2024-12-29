@@ -50,8 +50,5 @@ public class Bm extends BaseEntity {
     private List<PtImg> ptImgs = new ArrayList<>();
 
     @OneToMany(mappedBy = "bm", fetch = FetchType.LAZY)
-    private List<BmTag> bmTags = new ArrayList<>();
-
-    @OneToMany(mappedBy = "bm", fetch = FetchType.LAZY)
     private List<Comment> comments = new ArrayList<>();
 }

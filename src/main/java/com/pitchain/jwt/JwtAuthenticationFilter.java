@@ -39,12 +39,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String token = tokenUtil.extractToken(request, TokenType.ACCESS_TOKEN);
 
-        if (token == null) {
-            log.error("Access token is missing");
-            throw new GeneralHandler(ErrorStatus.MISSING_ACCESS_TOKEN);
-        }
-
         // jwt 검증 로직
+//        if (token == null) {
+//            log.error("Access token is missing");
+//            throw new GeneralHandler(ErrorStatus.MISSING_ACCESS_TOKEN);
+//        }
+//
 //        DecodedJWT decodedJWT = tokenUtil.decodedJWT(token);
 //        Long id = decodedJWT.getClaim("id").asLong();
 //        Authentication authentication = new UsernamePasswordAuthenticationToken(id,null);

@@ -2,6 +2,7 @@ package com.pitchain.entity;
 
 import com.pitchain.common.entity.BaseEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Positive;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,6 +26,8 @@ public class Investment  extends BaseEntity {
     @JoinColumn(name = "bm_id", nullable = false)
     private Bm bm;
 
+    @Positive
+    @Column(nullable = false)
     private long amount;
 
     @Builder

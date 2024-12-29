@@ -22,7 +22,10 @@ public enum ErrorStatus implements ResponseStatus {
     MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "MEMBER4041", "존재하지 않는 사용자입니다."),
 
     // bm
-    BM_NOT_FOUND(HttpStatus.NOT_FOUND, "BM4041", "존재하지 않는 BM입니다.");
+    BM_NOT_FOUND(HttpStatus.NOT_FOUND, "BM4041", "존재하지 않는 BM입니다."),
+
+    // sp
+    SP_NOT_FOUND(HttpStatus.NOT_FOUND, "SP4041", "존재하지 않는 SP입니다.");
 
     private final HttpStatus httpStatus;
     private final String code;

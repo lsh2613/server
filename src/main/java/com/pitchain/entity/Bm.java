@@ -1,5 +1,6 @@
 package com.pitchain.entity;
 
+import com.pitchain.common.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Bm {
+public class Bm extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,21 +34,19 @@ public class Bm {
     private String descriptionImg;
     private String address;
     private Long valuationCap;
+    private Integer investmentGoal;
     private LocalDate deadline;
     private String longPitchUrl;
 
-    @OneToMany(mappedBy = "bm")
+    @OneToMany(mappedBy = "bm", fetch = FetchType.LAZY)
     private List<Investment> investments = new ArrayList<>();
 
-    @OneToOne(mappedBy = "bm")
+    @OneToOne(mappedBy = "bm", fetch = FetchType.LAZY)
     private Sp sp;
 
-    @OneToMany(mappedBy = "bm")
+    @OneToMany(mappedBy = "bm", fetch = FetchType.LAZY)
     private List<PtImg> ptImgs = new ArrayList<>();
 
-    @OneToMany(mappedBy = "bm")
-    private List<BmTag> bmTags = new ArrayList<>();
-
-    @OneToMany(mappedBy = "bm")
+    @OneToMany(mappedBy = "bm", fetch = FetchType.LAZY)
     private List<Comment> comments = new ArrayList<>();
 }

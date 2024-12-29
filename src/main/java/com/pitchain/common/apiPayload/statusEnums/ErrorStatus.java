@@ -19,10 +19,10 @@ public enum ErrorStatus implements ResponseStatus {
     MISSING_ACCESS_TOKEN(HttpStatus.BAD_REQUEST, "TOKEN4012", "Access Token이 존재하지 않습니다."),
 
     // member
-    INVALID_MEMBER(HttpStatus.BAD_REQUEST, "MEMBER4001", "유효하지 않은 사용자입니다."),
+    MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "MEMBER4041", "존재하지 않는 사용자입니다."),
 
     // bm
-    INVALID_BM(HttpStatus.BAD_REQUEST, "BM4001", "유효하지 않은 BM입니다.");
+    BM_NOT_FOUND(HttpStatus.NOT_FOUND, "BM4041", "존재하지 않는 BM입니다.");
 
     private final HttpStatus httpStatus;
     private final String code;

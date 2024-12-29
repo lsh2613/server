@@ -22,9 +22,9 @@ public class InvestmentService {
     private final MemberRepository memberRepository;
 
     public Long addInvestment(Long bmId, Long memberId, long amount) {
-        Member member = memberRepository.findById(memberId).orElseThrow(() -> new GeneralHandler(ErrorStatus.INVALID_MEMBER));
+        Member member = memberRepository.findById(memberId).orElseThrow(() -> new GeneralHandler(ErrorStatus.MEMBER_NOT_FOUND));
 
-        Bm bm = bmRepository.findById(bmId).orElseThrow(() -> new GeneralHandler(ErrorStatus.INVALID_BM));
+        Bm bm = bmRepository.findById(bmId).orElseThrow(() -> new GeneralHandler(ErrorStatus.BM_NOT_FOUND));
         Investment investment = Investment.builder()
                 .member(member)
                 .bm(bm)

@@ -12,6 +12,10 @@ import lombok.NoArgsConstructor;
 public class Sp extends BaseEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "sp_id")
+    private Long id;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bm_id", nullable = false)
     private Bm bm;

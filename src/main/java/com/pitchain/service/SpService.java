@@ -24,8 +24,8 @@ public class SpService {
     }
 
     @Transactional(readOnly = true)
-    public SpRes getSp(Long bmId) {
-        Sp sp = spRepository.findById(bmId).orElseThrow(
+    public SpRes getSp(Long spId) {
+        Sp sp = spRepository.findById(spId).orElseThrow(
                 () -> new GeneralHandler(ErrorStatus.SP_NOT_FOUND)
         );
 

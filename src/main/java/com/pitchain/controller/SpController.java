@@ -24,10 +24,11 @@ public class SpController {
         return CustomApiResponse.onSuccess(spResList);
     }
 
-    @GetMapping("/{bmId}")
+    @GetMapping("/{spId}")
     public CustomApiResponse<SpRes> getSp(@AuthenticationPrincipal Long memberId,
-                                          @PathVariable Long bmId) {
-        SpRes spRes = spService.getSp(bmId);
+                                          @PathVariable Long spId) {
+        SpRes spRes = spService.getSp(spId);
         return CustomApiResponse.onSuccess(spRes);
     }
+
 }

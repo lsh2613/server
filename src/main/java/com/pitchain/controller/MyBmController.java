@@ -17,9 +17,9 @@ public class MyBmController {
     private final MyBmService myBmService;
 
     @PostMapping("/{bmId}/like")
-    public CustomApiResponse toggleMyBm(@PathVariable("bmId") Long bmId,
-                                        @AuthenticationPrincipal Long memberId) {
-        myBmService.toggleMyBm(bmId, memberId);
+    public CustomApiResponse toggleLikeBm(@PathVariable("bmId") Long bmId,
+                                          @AuthenticationPrincipal Long memberId) {
+        myBmService.toggleLikeBm(bmId, memberId);
         return CustomApiResponse.onSuccess();
     }
 }

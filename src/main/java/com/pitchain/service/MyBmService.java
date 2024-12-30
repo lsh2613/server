@@ -21,17 +21,17 @@ public class MyBmService {
     private final MemberRepository memberRepository;
     private final BmRepository bmRepository;
 
-    public void toggleMyBm(Long bmId, Long memberId) {
+    public void toggleLikeBm(Long bmId, Long memberId) {
         Member member = memberRepository.findById(memberId).orElseThrow(() -> new GeneralHandler(ErrorStatus.MEMBER_NOT_FOUND));
         Bm bm = bmRepository.findById(bmId).orElseThrow(() -> new GeneralHandler(ErrorStatus.BM_NOT_FOUND));
 
-        if (isToggled(member, bm)) {
+        if (isLiked(member, bm)) {
             cancelLike(member, bm);
         } else addLike(member, bm);
     }
 
     @Transactional(readOnly = true)
-    private boolean isToggled(Member member, Bm bm) {
+    private boolean isLiked(Member member, Bm bm) {
         return myBmRepository.existsByMemberAndBm(member, bm);
     }
 

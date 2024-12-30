@@ -23,4 +23,9 @@ public class MyBm {
     @JoinColumn(name = "bm_id", nullable = false)
     private Bm bm;
 
+    public MyBm(Member member, Bm bm) {
+        this.member = member;
+        this.bm = bm;
+    }
+
 }

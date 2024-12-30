@@ -17,11 +17,13 @@ import java.util.List;
 public class SpService {
     private final SpRepository spRepository;
 
+    @Transactional(readOnly = true)
     public List<SpRes> getSps() {
         List<Sp> sps = spRepository.findAll();
         return sps.stream().map(SpRes::createRes).toList();
     }
 
+    @Transactional(readOnly = true)
     public SpRes getSp(Long bmId) {
         Sp sp = spRepository.findById(bmId).orElseThrow(
                 () -> new GeneralHandler(ErrorStatus.SP_NOT_FOUND)
